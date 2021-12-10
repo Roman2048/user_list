@@ -24,6 +24,10 @@ class UserViewModel(private val userDao: UserDao) : ViewModel() {
         userDao.insert(user)
     }
 
+    fun delete(user: User) = viewModelScope.launch(Dispatchers.IO + handler) {
+        userDao.delete(user)
+    }
+
     fun loadUsersFromNetwork() {
         viewModelScope.launch(Dispatchers.IO + handler) {
             UserApi.retrofitService.getUser().users.forEach { userDao.insert(it.validate()) }
