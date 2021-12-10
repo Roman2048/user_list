@@ -12,11 +12,20 @@
         tools:layout="@layout/fragment_home" >
         <action
             android:id="@+id/action_homeFragment_to_userDetailsFragment"
+            app:enterAnim="@anim/mobtest_slide_in_right"
+            app:exitAnim="@anim/mobtest_slide_out_left"
             app:destination="@id/userDetailsFragment" />
     </fragment>
     <fragment
         android:id="@+id/userDetailsFragment"
         android:name="com.example.mobtest.ui.UserDetailsFragment"
         android:label="fragment_user_details"
-        tools:layout="@layout/fragment_user_details" /><action android:id="@+id/action_global_homeFragment" app:destination="@id/homeFragment"/>
+        tools:layout="@layout/fragment_user_details" >
+        <action
+            android:id="@+id/action_userDetailsFragment_to_homeFragment"
+            app:destination="@id/homeFragment"
+            app:enterAnim="@anim/mobtest_slide_in_left"
+            app:exitAnim="@anim/mobtest_slide_out_right" />
+    </fragment>
+    <action android:id="@+id/action_global_homeFragment" app:destination="@id/homeFragment" />
 </navigation>

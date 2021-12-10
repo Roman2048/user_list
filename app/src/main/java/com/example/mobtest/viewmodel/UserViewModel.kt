@@ -25,7 +25,7 @@ class UserViewModel(private val userDao: UserDao) : ViewModel() {
         userDao.insert(user)
     }
 
-    private fun loadUsersFromNetwork() {
+    fun loadUsersFromNetwork() {
         viewModelScope.launch(Dispatchers.IO + handler) {
             UserApi.retrofitService.getUser().users.forEach { userDao.insert(it) }
         }
