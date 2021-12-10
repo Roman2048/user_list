@@ -10,11 +10,15 @@ import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.example.mobtest.R
 import com.example.mobtest.data.entity.User
+import com.google.android.material.card.MaterialCardView
 import com.google.android.material.textview.MaterialTextView
 
-class UserAdapter : ListAdapter<User, UserAdapter.UserViewHolder>(DiffCallback) {
+class UserAdapter(
+    private val navigateToUserDetails: (user: User) -> Unit,
+) : ListAdapter<User, UserAdapter.UserViewHolder>(DiffCallback) {
 
     class UserViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+        val userCard: MaterialCardView = view.findViewById(R.id.home_user_card_view)
         val avatarUrl: AppCompatImageView = view.findViewById(R.id.home_user_avatar_image_view)
         val name: MaterialTextView = view.findViewById(R.id.home_user_name_text_view)
         val email: MaterialTextView = view.findViewById(R.id.home_user_email_text_view)
@@ -31,6 +35,9 @@ class UserAdapter : ListAdapter<User, UserAdapter.UserViewHolder>(DiffCallback) 
         holder.avatarUrl.load(user.avatarUrl)
         holder.name.text = "${user.firstName} ${user.lastName}"
         holder.email.text = user.email
+        holder.userCard.setOnClickListener {
+            navigateToUserDetails.invoke(user)
+        }
     }
 
     companion object DiffCallback : DiffUtil.ItemCallback<User>() {
@@ -39,7 +46,7 @@ class UserAdapter : ListAdapter<User, UserAdapter.UserViewHolder>(DiffCallback) 
         }
 
         override fun areContentsTheSame(oldItem: User, newItem: User): Boolean {
-            return  oldItem.firstName == newItem.firstName
+            return oldItem.firstName == newItem.firstName
         }
     }
 }
