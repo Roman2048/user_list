@@ -1,6 +1,7 @@
 package com.example.mobtest.ui
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.View
 import android.widget.ImageButton
@@ -12,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.mobtest.MobtestApplication
 import com.example.mobtest.R
 import com.example.mobtest.adapter.UserAdapter
-import com.example.mobtest.data.UserViewModelFactory
+import com.example.mobtest.viewmodel.UserViewModelFactory
 import com.example.mobtest.data.entity.User
 import com.example.mobtest.viewmodel.UserViewModel
 import kotlinx.coroutines.flow.collect
@@ -43,6 +44,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         recyclerView = view.findViewById(R.id.home_user_recycler_view)
         refreshButton = view.findViewById(R.id.user_details_refresh_button)
         val navigateToUserDetails: (user: User) -> Unit = {
+            Log.i("user_action", "Home screen: navigate to details with id = ${it.id}")
             userViewModel.currentUser = it
             findNavController().navigate(R.id.action_homeFragment_to_userDetailsFragment)
         }

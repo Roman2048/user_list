@@ -1,5 +1,6 @@
 package com.example.mobtest.viewmodel
 
+import android.view.View
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.mobtest.data.dao.UserDao
@@ -12,7 +13,9 @@ import kotlinx.coroutines.launch
 
 class UserViewModel(private val userDao: UserDao) : ViewModel() {
 
-    var users = userDao.getAll()
+    private val _users = userDao.getAll()
+
+    var users = _users
 
     var currentUser: User? = null
 

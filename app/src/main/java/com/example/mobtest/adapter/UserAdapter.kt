@@ -32,7 +32,10 @@ class UserAdapter(
 
     override fun onBindViewHolder(holder: UserViewHolder, position: Int) {
         val user: User = getItem(position)
-        holder.avatarUrl.load(user.avatarUrl)
+        holder.avatarUrl.load(user.avatarUrl) {
+            placeholder(R.drawable.loading_img)
+            error(R.drawable.ic_broken_image)
+        }
         holder.name.text = "${user.firstName} ${user.lastName}"
         holder.email.text = user.email
         holder.userCard.setOnClickListener {

@@ -2,4 +2,6 @@
 <resources>
     <string name="user_details_title_text_view_text">DEAR USER LIST</string>
     <string name="user_details_refresh_button_desc">Refresh list</string>
+    <string name="user_details_title_text_view">USER DETAILS</string>
+    <string name="user_details_back_to_home_screen">Back to home screen</string>
 </resources>
