@@ -4,4 +4,5 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="user_details_title_text_view_text">DEAR USERS LIST:</string>
     <string name="user_details_refresh_button_desc">Refresh list</string>
+    <string name="user_details_hint_text_view_text">Tap on the name or the email to edit them</string>
 </resources>

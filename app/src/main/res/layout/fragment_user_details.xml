@@ -19,8 +19,8 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="USER DETAILS"
         android:layout_marginStart="16dp"
+        android:text="USER DETAILS"
         android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
         app:layout_constraintBottom_toBottomOf="@id/user_details_back_button"
         app:layout_constraintStart_toEndOf="@id/user_details_back_button"
@@ -28,39 +28,61 @@
 
     <ImageView
         android:id="@+id/user_details_user_avatar_image_view"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
         android:layout_marginTop="24dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/user_details_back_button"
         tools:src="@mipmap/ic_launcher" />
 
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/user_details_user_name_text_view"
+    <EditText
+        android:id="@+id/user_details_user_first_name_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
+        android:background="@android:color/transparent"
+        android:maxLength="30"
+        android:maxLines="1"
         android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+        app:layout_constraintBottom_toTopOf="@id/user_details_user_last_name_text_view"
         app:layout_constraintStart_toEndOf="@id/user_details_user_avatar_image_view"
         app:layout_constraintTop_toTopOf="@id/user_details_user_avatar_image_view"
-        tools:text="Ivan Ivanov" />
+        tools:text="Ivan" />
 
-    <com.google.android.material.textview.MaterialTextView
+    <EditText
+        android:id="@+id/user_details_user_last_name_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:background="@android:color/transparent"
+        android:maxLength="30"
+        android:maxLines="1"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+        app:layout_constraintBottom_toTopOf="@+id/user_details_user_email_text_view"
+        app:layout_constraintStart_toEndOf="@id/user_details_user_avatar_image_view"
+        app:layout_constraintTop_toBottomOf="@+id/user_details_user_first_name_text_view"
+        tools:text="Ivanov" />
+
+    <EditText
         android:id="@+id/user_details_user_email_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
+        android:background="@android:color/transparent"
+        android:maxLength="50"
+        android:maxLines="1"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
+        app:layout_constraintBottom_toBottomOf="@id/user_details_user_avatar_image_view"
         app:layout_constraintStart_toEndOf="@id/user_details_user_avatar_image_view"
-        app:layout_constraintTop_toBottomOf="@id/user_details_user_name_text_view"
+        app:layout_constraintTop_toBottomOf="@id/user_details_user_last_name_text_view"
         tools:text="ivan@gmail.com" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:text="Tap on the name or the email to edit them"
+        android:text="@string/user_details_hint_text_view_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/user_details_user_avatar_image_view" />

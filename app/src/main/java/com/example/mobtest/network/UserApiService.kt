@@ -1,7 +1,5 @@
 package com.example.mobtest.network
 
-import com.example.mobtest.data.entity.Resp
-import com.example.mobtest.data.entity.User
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import retrofit2.Retrofit
@@ -18,8 +16,8 @@ private val retrofit = Retrofit.Builder()
     .build()
 
 interface UserApiService {
-    @GET("api/users")
-    suspend fun getUser(): Resp
+    @GET("api/users?per_page=100")
+    suspend fun getUser(): UsersResponse
 }
 
 object UserApi {
