@@ -5,7 +5,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.mobtest.data.dao.UserDao
 import com.example.mobtest.data.entity.User
 import com.example.mobtest.data.entity.validate
-import com.example.mobtest.network.UserApi
+import com.example.mobtest.network.UserApiService
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.Dispatchers
@@ -13,7 +13,10 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class UserViewModel @Inject constructor(private val userDao: UserDao) : ViewModel() {
+class UserViewModel @Inject constructor(
+    private val userDao: UserDao,
+    private val userApiService: UserApiService,
+) : ViewModel() {
 
     private val _users = userDao.getAll()
 
@@ -35,7 +38,7 @@ class UserViewModel @Inject constructor(private val userDao: UserDao) : ViewMode
 
     fun loadUsersFromNetwork() {
         viewModelScope.launch(Dispatchers.IO + handler) {
-            UserApi.retrofitService.getUser().users.forEach { userDao.insert(it.validate()) }
+            userApiService.getUser().users.forEach { userDao.insert(it.validate()) }
         }
     }
 
