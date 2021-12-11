@@ -1,8 +1,7 @@
 package com.example.mobtest
 
 import android.app.Application
-import com.example.mobtest.data.MobtestDatabase
+import dagger.hilt.android.HiltAndroidApp
 
-class MobtestApplication : Application() {
-    val database: MobtestDatabase by lazy { MobtestDatabase.getDatabase(this) }
-}
+@HiltAndroidApp
+class MobtestApplication : Application()

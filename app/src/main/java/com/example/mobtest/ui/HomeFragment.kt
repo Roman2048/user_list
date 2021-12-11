@@ -10,26 +10,23 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
-import com.example.mobtest.MobtestApplication
 import com.example.mobtest.R
 import com.example.mobtest.adapter.UserAdapter
 import com.example.mobtest.data.entity.User
 import com.example.mobtest.viewmodel.UserViewModel
-import com.example.mobtest.viewmodel.UserViewModelFactory
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
+@AndroidEntryPoint
 class HomeFragment : Fragment(R.layout.fragment_home) {
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var refreshButton: ImageButton
 
-    private val userViewModel: UserViewModel by activityViewModels {
-        val mobtestApplication = activity?.application as MobtestApplication
-        UserViewModelFactory(mobtestApplication.database.userDao())
-    }
+    private val userViewModel: UserViewModel by activityViewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -52,7 +49,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         }
         val userAdapter = UserAdapter(navigateToUserDetails)
         recyclerView.adapter = userAdapter
-        lifecycleScope.launch(Dispatchers.IO) {
+        lifecycleScope.launch {
             userViewModel.users.collect {
                 withContext(Dispatchers.Main) {
                     userAdapter.submitList(it.sortedBy { user -> user.id })

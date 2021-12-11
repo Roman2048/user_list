@@ -6,11 +6,14 @@ import com.example.mobtest.data.dao.UserDao
 import com.example.mobtest.data.entity.User
 import com.example.mobtest.data.entity.validate
 import com.example.mobtest.network.UserApi
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class UserViewModel(private val userDao: UserDao) : ViewModel() {
+@HiltViewModel
+class UserViewModel @Inject constructor(private val userDao: UserDao) : ViewModel() {
 
     private val _users = userDao.getAll()
 

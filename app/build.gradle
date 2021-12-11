@@ -3,6 +3,7 @@ plugins {
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-kapt'
     id 'kotlin-parcelize'
+    id 'dagger.hilt.android.plugin'
 }
 
 android {
@@ -42,6 +43,10 @@ dependencies {
     testImplementation "androidx.room:room-testing:$room_version"
     // Coil
     implementation "io.coil-kt:coil:1.1.1"
+    // Hilt, Dagger
+    implementation("androidx.hilt:hilt-navigation-fragment:1.0.0")
+    implementation "com.google.dagger:hilt-android:2.38.1"
+    kapt "com.google.dagger:hilt-compiler:2.38.1"
     // Moshi
     implementation 'com.squareup.moshi:moshi-kotlin:1.9.3'
     // Retrofit

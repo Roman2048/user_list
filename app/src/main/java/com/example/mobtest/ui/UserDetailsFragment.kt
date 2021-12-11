@@ -13,13 +13,13 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import coil.load
-import com.example.mobtest.MobtestApplication
 import com.example.mobtest.R
 import com.example.mobtest.data.entity.User
 import com.example.mobtest.data.entity.validate
 import com.example.mobtest.viewmodel.UserViewModel
-import com.example.mobtest.viewmodel.UserViewModelFactory
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class UserDetailsFragment : Fragment(R.layout.fragment_user_details) {
 
     private lateinit var userFirstName: EditText
@@ -29,10 +29,7 @@ class UserDetailsFragment : Fragment(R.layout.fragment_user_details) {
     private lateinit var backButton: ImageButton
     private lateinit var deleteButton: ImageButton
 
-    private val userViewModel: UserViewModel by activityViewModels {
-        val mobtestApplication = activity?.application as MobtestApplication
-        UserViewModelFactory(mobtestApplication.database.userDao())
-    }
+    private val userViewModel: UserViewModel by activityViewModels()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
