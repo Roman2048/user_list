@@ -36,7 +36,8 @@ class UserAdapter(
             placeholder(R.drawable.loading_img)
             error(R.drawable.ic_broken_image)
         }
-        holder.name.text = "${user.firstName} ${user.lastName}"
+        holder.name.text = holder.itemView.context
+            .getString(R.string.user_details_first_and_last_name, user.firstName, user.lastName)
         holder.email.text = user.email
         holder.userCard.setOnClickListener {
             navigateToUserDetails.invoke(user)

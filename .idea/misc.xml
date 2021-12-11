@@ -3,6 +3,8 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/RoMasha/AndroidStudioProjects/mobtest/app/src/main/res/drawable/ic_baseline_people_outline_200.xml" value="0.1795" />
+        <entry key="..\:/Users/RoMasha/AndroidStudioProjects/mobtest/app/src/main/res/drawable/ic_baseline_people_outline_splash.xml" value="0.1545" />
         <entry key="..\:/Users/RoMasha/AndroidStudioProjects/mobtest/app/src/main/res/drawable/ic_broken_image.xml" value="0.1795" />
         <entry key="..\:/Users/RoMasha/AndroidStudioProjects/mobtest/app/src/main/res/drawable/ic_connection_error.xml" value="0.1795" />
         <entry key="..\:/Users/RoMasha/AndroidStudioProjects/mobtest/app/src/main/res/drawable/loading_img.xml" value="0.1795" />

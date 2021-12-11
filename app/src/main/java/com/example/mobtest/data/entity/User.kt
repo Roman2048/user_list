@@ -2,12 +2,10 @@ package com.example.mobtest.data.entity
 
 import android.os.Parcelable
 import android.util.Log
-import android.webkit.URLUtil
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.squareup.moshi.Json
 import kotlinx.parcelize.Parcelize
-import java.io.Serializable
 
 @Parcelize
 @Entity(tableName = "user")

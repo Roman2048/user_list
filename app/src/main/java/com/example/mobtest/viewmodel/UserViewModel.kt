@@ -1,6 +1,5 @@
 package com.example.mobtest.viewmodel
 
-import android.view.View
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.mobtest.data.dao.UserDao
@@ -23,11 +22,11 @@ class UserViewModel(private val userDao: UserDao) : ViewModel() {
         println(throwable.localizedMessage)
     }
 
-    fun insert(user: User) = viewModelScope.launch(Dispatchers.IO + handler) {
+    fun insert(user: User) = viewModelScope.launch(Dispatchers.IO) {
         userDao.insert(user)
     }
 
-    fun delete(user: User) = viewModelScope.launch(Dispatchers.IO + handler) {
+    fun delete(user: User) = viewModelScope.launch(Dispatchers.IO) {
         userDao.delete(user)
     }
 

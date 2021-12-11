@@ -25,5 +25,3 @@ object UserApi {
         retrofit.create(UserApiService::class.java)
     }
 }
-
-

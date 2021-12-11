@@ -4,4 +4,5 @@
     <string name="user_details_refresh_button_desc">Refresh list</string>
     <string name="user_details_title_text_view">USER DETAILS</string>
     <string name="user_details_back_to_home_screen">Back to home screen</string>
+    <string name="user_details_first_and_last_name">%1$s %2$s</string>
 </resources>

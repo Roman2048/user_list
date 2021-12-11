@@ -1,10 +1,13 @@
 <resources>
     <string name="app_name">Mobtest</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="user_details_title_text_view_text">DEAR USER LIST</string>
     <string name="user_details_refresh_button_desc">Refresh list</string>
     <string name="user_details_hint_text_view_text">Tap on the name or the email to edit them</string>
     <string name="user_details_title_text_view">USER DETAILS</string>
     <string name="user_details_back_to_home_screen">Back to home screen</string>
+    <string name="user_details_first_and_last_name">%1$s %2$s</string>
+    <string name="user_details_user_first_name_hint">First name</string>
+    <string name="user_details_user_last_name_hint">Last name</string>
+    <string name="user_details_user_email_hint">Email</string>
 </resources>

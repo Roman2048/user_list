@@ -1,12 +1,11 @@
 package com.example.mobtest.data.entity
 
-import junit.framework.TestCase
 import org.junit.Test
 
-class UserKtTest : TestCase() {
+class UserKtTest {
 
     @Test
-    fun `test user with too long first name`() {
+    fun `user with too long first name`() {
         val user = User(
             "1",
             "KodakKodakKodakKodakKodakKodakKodakKodakKodakKodak",
@@ -18,7 +17,7 @@ class UserKtTest : TestCase() {
     }
 
     @Test
-    fun `test user with too long last name`() {
+    fun `user with too long last name`() {
         val user = User(
             "1",
             "Kodak",
@@ -30,7 +29,7 @@ class UserKtTest : TestCase() {
     }
 
     @Test
-    fun `test user with too long email`() {
+    fun `user with too long email`() {
         val user = User(
             "1",
             "Kodak",
@@ -42,7 +41,7 @@ class UserKtTest : TestCase() {
     }
 
     @Test
-    fun `test user with invalid avatar url`() {
+    fun `user with invalid avatar url`() {
         val user = User(
             "1",
             "Kodak",

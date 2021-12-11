@@ -15,10 +15,10 @@ import androidx.navigation.fragment.findNavController
 import coil.load
 import com.example.mobtest.MobtestApplication
 import com.example.mobtest.R
-import com.example.mobtest.viewmodel.UserViewModelFactory
 import com.example.mobtest.data.entity.User
 import com.example.mobtest.data.entity.validate
 import com.example.mobtest.viewmodel.UserViewModel
+import com.example.mobtest.viewmodel.UserViewModelFactory
 
 class UserDetailsFragment : Fragment(R.layout.fragment_user_details) {
 
@@ -56,10 +56,11 @@ class UserDetailsFragment : Fragment(R.layout.fragment_user_details) {
         deleteButton.setOnClickListener {
             val builder = AlertDialog.Builder(requireContext())
             builder.setTitle("Confirmation")
-            builder.setMessage("The user will be deleted. Are you sure?")
+            builder.setMessage("The user will be deleted.\nAre you sure?")
             builder.setPositiveButton("Yes") { _, _ ->
                 currentUser?.let { userViewModel.delete(it) }
                 userViewModel.currentUser = null
+                it.hideKeyboard()
                 findNavController().navigate(R.id.action_userDetailsFragment_to_homeFragment)
             }
             builder.setNegativeButton("No") { _, _ -> }
@@ -67,13 +68,12 @@ class UserDetailsFragment : Fragment(R.layout.fragment_user_details) {
         }
     }
 
-    private fun setBackButton(
-        currentUser: User?,
-        view: View
-    ) {
+    private fun setBackButton(currentUser: User?, view: View) {
         backButton.setOnClickListener {
-            Log.i("user_action",
-                "Details screen: navigate to home screen user with id = ${currentUser?.id}")
+            Log.i(
+                "user_action",
+                "Details screen: navigate to home screen user with id = ${currentUser?.id}"
+            )
             currentUser?.run {
                 firstName = userFirstName.text.toString()
                 lastName = userLastName.text.toString()

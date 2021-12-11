@@ -13,4 +13,3 @@ class UserViewModelFactory(private val userDao: UserDao) : ViewModelProvider.Fac
         throw IllegalArgumentException("Unknown ViewModel class")
     }
 }
-

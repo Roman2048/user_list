@@ -2,22 +2,24 @@ package com.example.mobtest.ui
 
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.View
 import android.widget.ImageButton
 import androidx.activity.OnBackPressedCallback
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.coroutineScope
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mobtest.MobtestApplication
 import com.example.mobtest.R
 import com.example.mobtest.adapter.UserAdapter
-import com.example.mobtest.viewmodel.UserViewModelFactory
 import com.example.mobtest.data.entity.User
 import com.example.mobtest.viewmodel.UserViewModel
+import com.example.mobtest.viewmodel.UserViewModelFactory
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class HomeFragment : Fragment(R.layout.fragment_home) {
 
@@ -50,9 +52,11 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         }
         val userAdapter = UserAdapter(navigateToUserDetails)
         recyclerView.adapter = userAdapter
-        lifecycle.coroutineScope.launch {
+        lifecycleScope.launch(Dispatchers.IO) {
             userViewModel.users.collect {
-                userAdapter.submitList(it.sortedBy { user -> user.id })
+                withContext(Dispatchers.Main) {
+                    userAdapter.submitList(it.sortedBy { user -> user.id })
+                }
             }
         }
         refreshButton.setOnClickListener {
